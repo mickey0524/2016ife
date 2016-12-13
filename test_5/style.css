@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 15px;
+  background: #ccc;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  background: black;
+}
+
+header a img {
+  padding: 2px 20px;
+  width: 55px;
+  height: 55px;
+}
+
+header ul {
+  float: right;
+}
+
+header ul li {
+  float: left;
+  list-style-type: none;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 22px 18px;
+  cursor: pointer;
+}
+
+header ul li:hover {
+  background: #ccc;
+  border-bottom: 1px solid blue;
+  border-radius: 2px;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  margin: 20px 450px 20px 20px; 
+  padding: 20px;
+  background: white;
+  box-shadow: 1px 2px 2px 1px #848484;
+  display: block;
+}
+
+#first img, #second img {
+  width: 40%;
+}
+
+.container h2 {
+  margin: 20px 0px;
+}
+
+.container h3, aside h3 {
+  margin: 16px 0px;
+}
+
+.container h4 {
+  margin: 12px 0px;
+}
+
+.container p {
+  text-indent: 2em;
+  line-height: 20px;
+}
+
+.container img {
+  margin: 20px 0px;
+}
+
+#second ul li {
+  list-style-type: none;
+  padding: 5px 20px;
+}
+
+figure {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+figure figcaption {
+  padding: 5px;
+}
+
+figure img {
+  width: 80%;
+}
+
+#fourth ol li {
+  list-style-position: inside;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+#fourth table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#fourth table caption {
+  text-align: left;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+#fourth table thead {
+  text-align: left;
+  color: white;
+  background: black;
+}
+
+#fourth table tfoot {
+  background: #ccc;
+}
+
+#fourth table tr th, td {
+  padding: 5px;
+}
+
+aside {
+  width: 360px;
+  float: right;
+  margin: 20px;
+  padding: 20px;
+  background: white;
+  box-shadow: 1px 2px 2px 1px #848484;
+  display: block;
+}
+
+aside h3 {
+  border-left: 2px solid #ccc;
+  padding: 10px; 
+  line-height: 20px;
+}
+
+aside form div {
+  margin: 10px;
+}
+
+aside form div label {
+  float: left;
+  text-align: right;
+  padding-right: 15px;
+  width: 35%;
+}
+
+aside form div p {
+  color: #ccc;
+  padding-left: 15px;
+  margin-left: 35%;
+  font-size: 12px;
+}
+
+aside input[type='button'] {
+  background: #3355D0;
+  height: 40px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #3355D0;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}

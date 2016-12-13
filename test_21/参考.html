@@ -1,0 +1,164 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task_2-21</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	body {
+		width: 800px;
+		margin: 0 auto;
+	}
+	#tag_box {
+		margin: 20px auto;
+	}
+	#tag_list {
+		display: flex;
+	}
+	#tag_list span{
+		background-color: #78BCFB;
+		color: #fff;
+		cursor: pointer;
+		padding: 8px;
+		margin: 2px 5px;
+	}
+	#hobby_box {
+		margin: 20px auto;
+	}
+	#hobby_list {
+		display: flex;
+	}
+	#hobby_list span{
+		background-color: orange;
+		color: #fff;
+		cursor: pointer;
+		padding: 8px;
+		margin: 2px 5px;
+	}
+	button {
+		margin-top: 5px;
+		padding: 3px;
+	}
+	</style>
+</head>
+<body>
+<div id="tag_box">
+	<span>Tag:</span><input type="text" id="tag_input">
+</div>
+<div id="tag_list">
+</div>
+
+<div id="hobby_box">
+	<textarea rows="3" cols="25" id="hobby_input"></textarea><br>
+	<button>确认兴趣爱好</button>	
+</div>
+<div id="hobby_list">
+</div>
+
+<script>
+	
+function addEventHandler(ele, event, hanlder) {
+    if (ele.addEventListener) {
+        ele.addEventListener(event, hanlder, false);
+    } else if (ele.attachEvent) {
+        ele.attachEvent("on"+event, hanlder);
+    } else  {
+        ele["on" + event] = hanlder;
+    }
+}
+
+var tagInput = document.getElementById('tag_input'),
+	tagList = document.getElementById('tag_list'),
+	hobbyInput = document.getElementById('hobby_input'),
+	hobbyList = document.getElementById('hobby_list'),
+	hobbyBtn = document.getElementsByTagName('button')[0];
+
+//实例对象
+var tagObj = new CreatList(tagList),
+	hobbyObj = new CreatList(hobbyList);
+
+window.onload = function () {
+//事件绑定
+	addEventHandler(tagInput,'keyup',showTag);
+	addEventHandler(hobbyBtn,'click',showHobby);
+
+	addEventHandler(tagList,'mouseover',function (e) {
+		if(e.target && e.target.nodeName == "SPAN") { 
+			e.target.firstChild.insertData(0,'点击删除');
+			e.target.style.background = 'red'; 
+		}
+	});
+	addEventHandler(tagList,'mouseout',function(e) {
+		if(e.target && e.target.nodeName == "SPAN") { 
+			e.target.firstChild.deleteData(0,4);
+			e.target.style.background = '#78BCFB'
+		}
+	})
+	addEventHandler(tagList,'click',function (e) {
+		if(e.target && e.target.nodeName == "SPAN") { 
+			tagList.removeChild(e.target);
+		}
+	})
+}
+
+//构造函数模式与原型模式结合
+function CreatList(divList) {
+	this.queue = [];
+	this.render = function () {
+		var str = "";
+		this.queue.forEach(function (e) {
+			str += '<span>' + e + '</span>';
+		});
+		divList.innerHTML = str;
+	}
+}
+CreatList.prototype.rightPush = function(str) {
+	this.queue.push(str);
+	this.render();
+};
+CreatList.prototype.leftShift = function() {
+	this.queue.shift();
+	this.render();
+};
+//本来还想写个去重的方法，但是失败了……
+
+//对输入内容分割成数组，考虑过能不能做成对象的方法，但是失败了……
+function splitInput(str) {
+	var inputArray = str.trim().split(/[,，;；、。.\s\n]+/);
+	return inputArray;
+}
+
+function showTag() {
+	if (/[,，;；、\s\n]+/.test(tagInput.value) || event.keyCode == 13) {
+		var data = splitInput(tagInput.value),
+			newTag = data[0];
+		if (tagObj.queue.indexOf(newTag) === -1) {
+			tagObj.rightPush(newTag);
+			if (tagObj.queue.length > 10) {
+				tagObj.leftShift();
+			}
+		}
+		tagObj.render();
+		tagInput.value = "";	
+	}	
+}
+
+function showHobby() {
+	var data = splitInput(hobbyInput.value);
+	data.forEach(function (e) {
+		if (hobbyObj.queue.indexOf(e) === -1) {
+			hobbyObj.rightPush(e);
+			if (hobbyObj.queue.length > 10) {
+				hobbyObj.leftShift();
+			}
+		}
+		hobbyObj.render();
+		hobbyInput.value = "";
+	});
+}
+</script>
+</body>
+</html>

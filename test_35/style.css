@@ -1,0 +1,99 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: '微软雅黑';
+}
+
+::-webkit-scrollbar {
+	width: 0;
+}
+
+.inputs {
+	margin-left: 40px;
+}
+
+.inputs button {
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+}
+
+.text {
+	margin-top: 10px; 
+	margin-left: 40px;
+}
+
+.text .title {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 30px;
+	height: 160px;
+	float: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: grey;
+}
+
+.text .title div {
+	display: inline-block;
+	font-size: 16px;
+	height: 20px;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.error {
+	width: 100%;
+	border-radius: 50%;
+	background-color: red;
+}
+
+.text textarea {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 420px;
+	height: 160px;
+	overflow: auto;
+	color: green;
+	background-color: #000;
+	font-size: 18px;
+}
+
+#container {
+	margin: 10px;
+	position: relative;
+	overflow: hidden;
+	border: 2px solid #000;
+	border-radius: 3px;
+}
+
+.block {
+	box-sizing: border-box;
+	width: 42px;
+	height: 42px;
+	border-bottom: 1px solid #DCDCDC;
+	border-right: 1px solid #DCDCDC;
+	float: left;
+}
+
+.block_bottom {
+	border-bottom: 0;
+}
+
+.block_right {
+	border-right: 0;
+}
+
+.action {
+	position: absolute;
+	width: 42px;
+	height: 34px;
+	background-color: blue;
+	border-top: 8px solid red;
+	transition: all 0.4s;
+}

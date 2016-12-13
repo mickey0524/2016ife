@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+form {
+	margin: 50px 0 0 40px;
+	font-size: 20px;
+}
+
+form label {
+	font-weight: bold;
+	margin-right: 30px;
+}
+
+form #content {
+	height: 40px;
+	width: 400px;
+	border: 0;
+	outline: 0;
+	border: 2px solid #DCDCDC;
+	border-radius: 6px;
+	margin-right: 10px;
+}
+
+form #btn {
+	width: 60px;
+	height: 40px;
+	background-color: blue;
+	border: 0;
+	outline: 0;
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+	border-radius: 6px;
+	color: #fff; 
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.res {
+	color: #DCDCDC;
+	margin: 10px 0 0 115px;
+}

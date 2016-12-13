@@ -1,0 +1,45 @@
+body {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+.tag {
+	margin-bottom: 40px;
+}
+
+#tag_input {
+	border: 2px solid #87CEFA;
+	height: 20px;
+	min-width: 200px;
+}
+
+#tag_result span {
+	min-width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	background: #87CEFA;
+	color: #fff;
+	padding: 5px;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+#comfirm {
+	display: block;
+	font-size: 20px;
+	width: 100px;
+}
+
+#hobby_result div {
+	display: inline-block;
+	min-width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	background: #FFEBCD;
+	margin-top: 5px;
+	margin-right: 10px;  
+}

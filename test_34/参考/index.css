@@ -1,0 +1,27 @@
+#container {
+  border: 2px solid #000;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.maze-block {
+  width: 42px;
+  height: 42px;
+  border-bottom: 1px solid rgb(237 ,237 ,237);
+  border-right: 1px solid rgb(237 ,237 ,237);
+  float: left;
+}
+.bottom-maze-block {
+  border-bottom: none;
+}
+.right-maze-block {
+  border-right: none;
+}
+.Action {
+  width: 42px;
+  height: 34px;
+  background: red;
+  border-top: 8px solid blue;
+  transition: all 1s;
+ /* transform: rotate(90deg);*/
+}

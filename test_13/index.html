@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test_13</title>
+</head>
+<body>
+	<label>请输入今天北京的空气质量：<input type="text" id="aqi-input"></label>
+	<button id="button">默认填写</button>
+
+	<div>您的输入值是：<span id="aqi-display">尚无录入</span></div>
+
+<script type="text/javascript">
+(function() {
+	var $ = function(id) {
+		return document.getElementById(id);
+	}
+
+	var handle = function() {
+		/*var num = parseInt($("aqi-input").value);
+		if(!isNaN(num) && num >= 0 && num <= 1000) {
+			$("aqi-display").innerHTML = num;
+		}*/
+		if($("aqi-input").value.match("^[0-9]+$")) {
+			$("aqi-display").innerHTML = $("aqi-input").value;
+		}
+		else {
+			alert($("aqi-input").value + "不是有效的数字，请重新输入");
+			$("aqi-input").value = "";
+		}
+	}
+
+	$("button").onclick = function() {
+		handle();
+	}
+
+	$("aqi-input").onkeyup = function() {
+		if(event.keyCode == 13) {
+			handle();
+		}
+	}
+
+}) ();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: '微软雅黑';
+}
+
+.inputs {
+	margin-left: 40px;
+}
+
+#container {
+	margin: 10px;
+	position: relative;
+	overflow: hidden;
+	border: 2px solid #000;
+	border-radius: 3px;
+}
+
+.block {
+	box-sizing: border-box;
+	width: 42px;
+	height: 42px;
+	border-bottom: 1px solid #DCDCDC;
+	border-right: 1px solid #DCDCDC;
+	float: left;
+}
+
+.block_bottom {
+	border-bottom: 0;
+}
+
+.block_right {
+	border-right: 0;
+}
+
+.action {
+	position: absolute;
+	width: 42px;
+	height: 34px;
+	background-color: blue;
+	border-top: 8px solid red;
+	transition: all 1s;
+}

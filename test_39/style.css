@@ -1,0 +1,36 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 16px;
+	font-family: 'Microsoft Yahei';
+	min-height: 2500px;
+}
+
+table {
+	text-align: center;
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
+
+thead {
+	position: fixed;
+	z-index: 1000;
+}
+
+tbody {
+	position: absolute;
+}
+
+td, th {
+	width: 140px;
+	height: 50px;
+	border: 1px solid grey;
+}
+
+th {
+	background: #2F2A2A;
+	color: #fff;
+}

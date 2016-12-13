@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test_23</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		div {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+			align-items: center;
+			border: 1px solid #000;
+			background-color: #fff;
+			color: #000;
+			padding: 5px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+		super
+		<div>
+			Car
+			<div>
+				Apple
+				<div>Pear</div>
+				<div>Pig</div>
+				<div>Cola</div>
+				<div>Soccer</div>
+			</div>
+			<div>Phone</div>
+			<div>
+				<div>Book</div>
+				<div>School</div>
+			</div>
+		</div>
+		<div>
+			Note
+			<div>
+				Human
+				<div>Code</div>
+				<div>Operate</div>
+				<div>Man</div>
+			</div>
+			<div>
+				Program
+				<div>
+					Element
+					<div>Cat</div>
+				</div>
+				<div>Glass</div>
+			</div>
+		</div>
+		<div>Fish</div>
+	</div>
+	<form>
+		<input type="text" id="select" placeholder="请输入需要查找的值">
+		<input type="button" id="bianli" value="开始遍历">
+	</form>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>

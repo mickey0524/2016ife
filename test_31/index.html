@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test_31</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="radio_select" onchange="radioChange()">
+			<div class="in_school">
+				<label>
+					<input type="radio" name="school" checked="checked" id="s1">在校生
+				</label>
+			</div>
+			<div class="in_school">
+				<label>
+					<input type="radio" name="school" id="s2">非在校生
+				</label>
+			</div>
+		</div>
+		<div class="school">
+			<label>学校</label>
+			<select id="city" onchange="selectDistrict()">
+				<option selected="selected">北京</option>
+				<option>上海</option>
+				<option>广州</option>
+			</select>
+			<select id="college">
+				<option selected="selected">北京大学</option>
+				<option>清华大学</option>
+				<option>北京邮电大学</option>
+			</select>
+		</div>
+		<div class="work">
+			<label>就业单位</label>
+			<input type="text" id="work_company">
+		</div>
+	</div>
+<script type="text/javascript" src="task.js"></script>
+</body>
+</html>
