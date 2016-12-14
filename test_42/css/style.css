@@ -1,0 +1,164 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+}
+
+.calendar {
+	margin: 0 40px 10px 40px;
+	width: 208px;
+	border: 1px solid grey;
+	border-radius: 3px;
+	display: none;
+}
+
+.calendar .header {
+	background: #BBB3B3;
+	height: 30px;
+	line-height: 30px;
+}
+
+.fa-reply {
+	margin-left: 10px;
+	margin-right: 20px;
+	width: 15px;
+}
+
+.fa-share {
+	margin-right: 10px;
+	margin-left: 20px;
+	width: 15px;
+}
+
+.header i {
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+}
+
+.header i:hover {
+	font-size: 20px;
+}
+
+.weekday {
+	padding: 0 10px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.weekday span {
+	display: inline-block;
+	width: 12%;
+	font-weight: bold;
+	text-align: center;
+}
+
+.main_body {
+	padding-left: 10px;
+}
+
+.main_body div {
+	display: inline-block;
+	width: 12%;
+	margin-right: 3px; 
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.main_body .day {
+	border: 1px solid #DCDCDC;
+	box-sizing: border-box;
+	background: #E4DEDE;
+	color : #000;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	cursor: pointer;
+}
+
+.main_body .day:hover {
+	background: #fff;
+}
+
+input {
+	cursor: pointer;
+}
+
+.icon {
+	margin: 40px 0 10px 40px;
+}
+
+.fa-calendar {
+	font-size: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.choose {
+	margin-left: 40px;
+}
+
+.choose i {
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.choose i:first-of-type {
+	margin-right: 30px; 
+}
+
+.choose .max_min {
+	margin-top: 20px; 
+	display: none;
+}
+
+.choose .max_min input {
+	width: 50px;
+	height: 30px;
+	text-align: center;
+	outline: 0;
+	border: 1px solid #DCDCDC;
+	border-radius: 3px; 
+	cursor: text;
+}
+
+.choose .max_min button {
+	width: 40px;
+	height: 30px;
+	vertical-align: middle;
+	border: 0;
+	outline: 0;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+}
+
+.choose .max_min button:first-of-type {
+	background: #FE3F3F;
+	color: #fff;
+	border: 1px solid #FE3F3F;
+}
+
+.choose .max_min button:first-of-type:hover {
+	color: #FE3F3F;
+	background: #FFF;
+}
+
+.choose .max_min button:last-of-type {
+	background: #599DF9;
+	color: #fff;
+	border: 1px solid #599DF9;
+}
+
+.choose .max_min button:last-of-type:hover {
+	background: #FFF;
+	color: #599DF9;
+}
