@@ -55,6 +55,7 @@ function change_mode(data, mode) {
  **/
 $('.year, .month').change(function() {
 	generate_calendar($('.year').val(), $('.month')[0].selectedIndex); 
+	$('input').val('');
 });
 
 /**点击日历框中的向左按钮
