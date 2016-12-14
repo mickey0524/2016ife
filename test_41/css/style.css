@@ -1,0 +1,101 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+}
+
+.calendar {
+	margin: 0 40px 40px 40px;
+	width: 208px;
+	border: 1px solid grey;
+	border-radius: 3px;
+	display: none;
+}
+
+.calendar .header {
+	background: #BBB3B3;
+	height: 30px;
+	line-height: 30px;
+}
+
+.fa-reply {
+	margin-left: 10px;
+	margin-right: 20px;
+	width: 15px;
+}
+
+.fa-share {
+	margin-right: 10px;
+	margin-left: 20px;
+	width: 15px;
+}
+
+.header i {
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+}
+
+.header i:hover {
+	font-size: 20px;
+}
+
+.weekday {
+	padding: 0 10px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.weekday span {
+	display: inline-block;
+	width: 12%;
+	font-weight: bold;
+	text-align: center;
+}
+
+.main_body {
+	padding-left: 10px;
+}
+
+.main_body div {
+	display: inline-block;
+	width: 12%;
+	margin-right: 3px; 
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.main_body .day {
+	border: 1px solid #DCDCDC;
+	box-sizing: border-box;
+	background: #E4DEDE;
+	color : #000;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	cursor: pointer;
+}
+
+.main_body .day:hover {
+	background: #fff;
+}
+
+input {
+	cursor: pointer;
+}
+
+.icon {
+	margin: 40px 0 10px 40px;
+}
+
+.fa-calendar {
+	font-size: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	cursor: pointer;
+}
