@@ -1,0 +1,51 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+}
+
+.menu {
+	margin: 20px 0 20px 40px;  
+
+}
+
+.menu i {
+	cursor: pointer;
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
+	vertical-align: top;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+}
+
+.menu p {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.menu i:hover {
+	font-size: 30px;
+}
+
+.menu input {
+	display: none;
+}
+
+.gallery {
+	margin: 40px;
+	margin-top: 0;
+	width: 600px;
+	height: 420px;
+	position: relative;
+}
+
+.gallery_item {
+	display: inline-block;
+	margin-top: -4px;
+}
