@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+	animation-duration: .5s;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+}
+
+.waterfall-col {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	z-index: 1;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+	text-align: center;
+}
+
+.modal-img {
+	display: inline-block;
+	opacity: 1;
+}
