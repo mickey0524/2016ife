@@ -38,8 +38,10 @@ Bowie.prototype.append = function(photos) {
 			item.className = 'photo-item';
 			item.style.marginRight = self.gap + 'px';
 			if(i == row.photos.length - 1) {                             //当每一行最后一张相片溢出该行的时候，对其宽度进行一定修改来适应
-				row.photos[i].width = self.element.clientWidth - (i + 2) * self.gap - preWidth - 10;
-				console.log(row.photos[i].width);
+				var widthResidue = self.element.clientWidth - (i + 2) * self.gap - preWidth - 10;
+				if(row.photos[i].width > widthResidue) {
+					row.photos[i].width = widthResidue;
+				}
 			}
 			preWidth += Number(row.photos[i].width);
 			item.innerHTML = '<img src="' + row.photos[i].url + '" width="' + row.photos[i].width + 'px" height="' + _row.style.height + 'px">';
