@@ -1,0 +1,75 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+	margin: 2px;
+}
+
+.universe {
+	min-width: 400px;
+	min-height: 600px;
+	background: #000;
+	position: relative;
+}
+
+.planet {
+	position: absolute;
+	border-radius: 50%;
+	background: blue;
+}
+
+.spacecraft {
+	position: absolute;
+	width: 80px;
+	height: 30px;
+	background: grey;
+	border-left: 10px solid blue; 
+	border-radius: 20px;
+	text-align: center;
+	line-height: 30px;
+	font-weight: 600;
+	transition: all 1s linear;
+	-webkit-transition: all 1s linear;
+}
+
+.command {
+	margin-top: 20px;
+	width: 800px;
+	border-radius: 3px;
+}
+
+.command .new {
+	border: 1px solid black;	
+	padding: 5px 0 10px 10px;
+}
+
+.command .operate {
+	font-size: 20px;
+}
+
+.command button {
+	outline: 0;
+	border: 0;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	text-align: center;
+	padding: 2px 6px;
+	background: #fff;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+}
+
+.command button:hover {
+	background: #F73737;
+	color: #FFF;
+}
+
+.command .spacecrafts {
+	border: 1px solid black;
+	padding-left: 10px;
+}
