@@ -1,79 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0, maxinum-scale=1.0, user-scalable=0" name="viewport">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<meta content="black" name="apple-mobile-web-app-status-bar-style">
-	<meta content="telephone=no" name="format-detection">
-	<title>test_11</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="theme-color" content="#91D4DA">
+	<title>test_12</title>
+	<link rel="stylesheet" type="text/css" href="style_1.css">
 </head>
 <body>
-	<div class="container">
-		<header>
-			<div class="header_left">
-				<img src="imgs/left-arrow.svg">
-				<span>返回</span>
-			</div>
-			<h1>这是标题</h1>
-		</header>
+	<header>
+		<a class="goback">
+			<img src="./imgs/left-arrow.svg" alt="返回">
+			返回
+		</a>
+		<h1>这是标题</h1>
+	</header>
+	<div class="body">
 		<nav>
 			<ul>
 				<li>导航</li>
+				<li class="active">导航</li>
 				<li>导航</li>
 				<li>导航</li>
 				<li>导航</li>
-				<li>导航</li>
-				<span class="bar"></span>
 			</ul>
 		</nav>
-		<img src="imgs/bear-figure.png">
-		<div class="tags">
+
+		<img class="banner" src="./imgs/bear-figure.png" alt="bear figure" />
+
+		<div class="labels">
 			<ul>
 				<li>
-					<figure><img src="imgs/doc.svg"></figure>
-					<p>标签</p>	
-				</li>
-				<li>
-					<figure><img src="imgs/doc.svg"></figure>
+					<figure>
+						<img src="imgs/doc.svg" alt="label" />
+					</figure>
 					<p>标签</p>
 				</li>
 				<li>
-					<figure><img src="imgs/doc.svg"></figure>
+					<figure>
+						<img src="imgs/doc.svg" alt="label" />
+					</figure>
 					<p>标签</p>
 				</li>
 				<li>
-					<figure><img src="imgs/doc.svg"></figure>
+					<figure>
+						<img src="imgs/doc.svg" alt="label" />
+					</figure>
 					<p>标签</p>
 				</li>
 				<li>
-					<figure><img src="imgs/doc.svg"></figure>
+					<figure>
+						<img src="imgs/doc.svg" alt="label" />
+					</figure>
+					<p>标签</p>
+				</li>
+				<li>
+					<figure>
+						<img src="imgs/doc.svg" alt="label" />
+					</figure>
 					<p>标签</p>
 				</li>
 			</ul>
 		</div>
-		<div class="subfields"> 
-			<div class="subfield">
-				<img src="bear-column-1.png">
-				<h1>分栏一</h1>
-				<h2>分栏小标题</h2>
-			</div>
-			<div class="subfield">
-				<img src="bear-column-2.png">
-				<h1>分栏二</h1>
-				<h2>分栏小标题</h2>				
-			</div>
-			<div class="subfield">
-				<img src="bear-column-3.png">
-				<h1>分栏三</h1>
-				<h2>分栏小标题</h2>				
-			</div>
+		<div class="columns">
+			<ul>
+				<li>
+					<figure>
+						<img src="imgs/bear-column-1.png" alt="column bear" />
+					</figure>
+					<h2>分栏一</h2>
+					<h3>分栏小标题</h3>
+				</li>
+				<li>
+					<figure>
+						<img src="imgs/bear-column-2.png" alt="column bear" />
+					</figure>
+					<h2>分栏一</h2>
+					<h3>分栏小标题</h3>
+				</li>
+				<li>
+					<figure>
+						<img src="imgs/bear-column-3.png" alt="column bear" />
+					</figure>
+					<h2>分栏一</h2>
+					<h3>分栏小标题</h3>
+				</li>
+			</ul>
 		</div>
-		<article>
+		<article class="module">
 			<header>模块一</header>
 			<section>
-				<img src="imgs/bear-avatar.png">
+				<img src="imgs/bear-avatar.png" alt="avatar">
 				<ul>
 					<li>这是文案</li>
 					<li>这是文案</li>
@@ -82,7 +100,7 @@
 				</ul>
 			</section>
 			<section>
-				<img src="imgs/bear-avatar.png">
+				<img src="imgs/bear-avatar.png" alt="avatar">
 				<ul>
 					<li>这是文案</li>
 					<li>这是文案</li>
@@ -91,10 +109,10 @@
 				</ul>
 			</section>
 		</article>
-		<article>
+		<article class="module">
 			<header>模块二</header>
 			<section>
-				<img src="imgs/bear-avatar.png">
+				<img src="imgs/bear-avatar.png" alt="avatar">
 				<ul>
 					<li>这是文案</li>
 					<li>这是文案</li>
@@ -103,7 +121,7 @@
 				</ul>
 			</section>
 			<section>
-				<img src="imgs/bear-avatar.png">
+				<img src="imgs/bear-avatar.png" alt="avatar">
 				<ul>
 					<li>这是文案</li>
 					<li>这是文案</li>
@@ -114,29 +132,32 @@
 		</article>
 		<div class="articles">
 			<article>
-				<img src="imgs/bear-article.png">
+				<img src="imgs/bear-article.png" alt="article" />
 				<section>
 					<header>这是文章标题字号是22的文章标题</header>
 					<aside>文章来源 6分钟前</aside>
 				</section>
 			</article>
 			<article>
-				<img src="imgs/bear-article.png">
+				<img src="imgs/bear-article.png" alt="article" />
 				<section>
-					<header>这是另一个文章标题</header>
+					<header>这是文章标题字号是22的文章标题</header>
 					<aside>文章来源 7分钟前</aside>
 				</section>
 			</article>
 			<article>
-				<header>这个也是文章标题字号是22的文章标题</header>
-				<ul>
-					<li><img src="imgs/bear-article.png"></li>
-					<li><img src="imgs/bear-article.png"></li>
-					<li><img src="imgs/bear-article.png"></li>
-				</ul>
-				<aside>文章来源 7分钟</aside>
+				<section>
+					<header>这个也是文章标题字号是22的文章标题</header>
+					<div class="imgs"> 
+						<div><img src="imgs/bear-article.png" alt="article" /></div>
+						<div><img src="imgs/bear-article.png" alt="article" /></div>
+						<div><img src="imgs/bear-article.png" alt="article" /></div>
+					</div>
+					<aside>文章来源 7分钟前</aside>
+				</section>
 			</article>
 		</div>
 	</div>
+<script type="text/javascript" src="scaling.js"></script>
 </body>
 </html>

@@ -1,18 +1,271 @@
+body, [data-dpr="1"] body {
+	font-size: 13px;
+}
+
+[data-dpr="2"] body {
+	font-size: 26px;
+}
+
+[data-dpr="3"] body {
+	font-size: 39px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	background-color: #F5F5F5;
-	color: #333
+	font-family:"Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	background-color:#F5F5F5;
+	width: 100%;
 }
 
-.container>header {
-	width: 100%;
+body>header {
 	height: 1.15rem;
-	background-color: #91D4DA; 
+	background-color:#91D4DA;
+	line-height: 1.15rem;
+	text-align: center;
+	position: relative;
+}
+
+body>header .goback {
+	vertical-align: sub;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: .3rem;
+}
+
+body>header .goback, body>header h1 {
+	color: #FFF;
+	font-size: .5rem;
+}
+
+body>header .goback img {
+	height: .4rem;
+}
+
+.body {
+	width: 100%;
+}
+
+.body nav {
+	height: 1.15rem;
+}
+
+.body nav ul {
+	height: 100%;
+	display: flex;
+	display: -webkit-flex;
+	text-align: center;
+	line-height: 1.15rem;
+}
+
+.body nav ul li {
+	display: inline-block;
+	list-style-type: none;
+	font-size: 
+	flex: 1;
+	-webkit-flex: 1;
+	font-size: .4rem;
+}
+
+.body nav ul .active {
+	border-bottom: .1rem solid #91D4DA
+}
+
+.body .banner {
+	width: 100%;
+	display: block;
+}
+
+.body .labels {
+	border-bottom: .05rem dotted #DCDCDC; 
+}
+
+.body .labels ul {
+	display: flex;
+	display: -webkit-flex;
+	text-align: center;
+}
+
+.body .labels ul li {
+	list-style-type: none;
+	display: inline-block;
+	flex: 1;
+	-webkit-flex: 1;
+	padding-top:.45rem;
+	padding-bottom:.5rem;
+}
+
+.body .labels ul li figure {
+	margin: 0 auto;
+	background: #00C7D6;
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
+
+.body .labels ul li figure img {
+	padding-top: 0.2rem;
+	width: 0.61rem;
+	height: 0.8rem;
+}
+
+.body .labels ul li p {
+	padding-top:.45rem;
+	margin:0
+}
+
+.body .columns {
+	width: 100%;
+}
+
+.body .columns ul {
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+}
+
+.body .columns ul li {
+	flex: 1;
+	-webkit-flex: 1;
+	display: inline-block;
+	list-style-type: none;
+	text-align: center;
+	margin-top: 0.45rem;
+	margin-bottom: 0.6rem;
+}
+
+.body .columns ul li:not(:last-child) {
+	border-right: .05rem dotted #DCDCDC;
+}
+
+.body .columns ul li figure {
+	height: 2rem;
+}
+
+.body .columns ul li figure img {
+	width:1.7rem;
+}
+
+.body .columns ul li h3 {
+	margin-top: 0.1rem; 
+	color: grey;
+}
+
+.body .module {
+	margin-left: .5rem; 
+	margin-top: 0.35rem;
+}
+
+.body .module header {
+	font-size: .6rem;
+	padding-bottom: .4rem;
+	margin-bottom: .5rem; 
+	border-bottom: .05rem dotted #DCDCDC;
+	color: grey;
+}
+
+.body .module section {
+	display: flex;
+	display: -webkit-flex;
+	align-items: stretch;
+	-webkit-align-items: stretch;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	padding-bottom:.3rem;
+}
+
+.body .module section img {
+	width: 2.43rem;
+	height: 2.27rem;
+	border: .05rem solid #FEB832;
+}
+
+.body .module section ul {
+	flex: 1;
+	-webkit-flex: 1;
+	width: 6.55rem;
+	height: 2.27rem;
+	display: flex;
+	display: -webkit-flex;
+	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-content: center;
+	-webkit-align-content: center;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.body .module section ul li {
+	text-align: center;
+	font-size: .2rem;
+	width: 3.2rem;
+	height: 1rem;
+	list-style-type: none;
+}
+
+.body .articles {
+	padding-left: .5rem; 
+	margin-top: 0.35rem;
+	width: 100%;
+}
+
+.body .articles article {
+	display: flex;
+	display: -webkit-flex;
+	margin-bottom: .4rem; 
+	width: 100%;
+}
+
+.body .articles article img {
+	width:2.8rem;
+	height:2rem;
+	margin-right:.3rem;
+}
+
+.body .articles article section header {
+	font-size: .4rem;
+	margin-bottom: .8rem; 
+}
+
+.body .articles article section aside {
+	color: grey;
+	font-size: .3rem;
+}
+
+.body .articles article section .imgs {
+	display:-webkit-flex;
+	display: flex;
+	-webkit-flex: row wrap;
+	flex: row wrap;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	display: block;
+	width: 100%;
+}
+
+.body .articles article section .imgs div {
+	display: inline-block;
+	list-style-type: none;
+	flex: 1;
+	-webkit-flex: 1;
+	width: 4rem;
+	height: 2.3rem;
+	text-align: center;
+}
+
+.body .articles article section .imgs div img {
+	margin: 0;
+}
+
+.body .articles article:last-child section header {
+	margin-bottom: .4rem;
 }
