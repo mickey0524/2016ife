@@ -1,0 +1,144 @@
+body {
+	font-size: 14px;
+	font-family: 'Microsoft Yahei';
+}
+
+table {
+	width: 300px;
+}
+
+table thead th {
+	background: #000;
+	color: #FFF;
+	text-align: left;
+}
+
+table tbody tr:nth-of-type(even) td {
+	background: #bbb;
+}
+
+table tbody tr:nth-of-type(-n + 3) td {
+	color: red;
+}
+
+input {
+	width: 100px;
+	border: 2px solid #DCDCDC;
+	margin: 20px;
+	transition: all 0.5s ease-in-out;
+}
+
+input:focus {
+	width: 200px;
+	border-color: cornflowerblue;
+}
+
+.banner {
+  	width: 250px;
+  	height: 150px;
+  	position: relative;
+  	overflow: hidden;
+}
+
+.banner ul {
+ 	margin: 0;
+  	padding: 0;
+}
+
+.banner li {
+  	display: inline-block;
+}
+
+.sliders {
+  	width: 300%;
+  	height: 100%;
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+  	animation: 5s slider-init linear infinite;
+}
+
+.sliders li {
+/*  	position: absolute;*/
+  	float: left;
+ /* 	top: 0;*/
+  	width: 33%;
+  	height: 100%;
+/*  	animation: .5s slider-out linear;*/
+}
+
+#slider-1 {
+  	background-color: red;
+}
+
+#slider-2 {
+  	background-color: green;
+}
+
+#slider-3 {
+  	background-color: blue;
+}
+
+.sliders li:target {
+  	left: 0%;
+/*  	animation: .5s slider-in linear;*/
+}
+
+
+@keyframes slider-init {
+  	0% {
+    	left: 0%;
+  	}
+  	25% {
+  		left: -100%;
+  	}
+  	50% {
+  		left: -200%;
+  	}
+  	75% {
+  		left: -100%;
+  	}
+  	100% {
+  		left: 0%;
+  	}
+}
+
+/*@keyframes slider-out {
+  	0% {
+    	left: 0%;
+  	}
+  	100% {
+    	left: -100%;
+  	}
+}
+*/
+/*@keyframes slider-in {
+  	0% {
+    	left: 100%;
+  	}
+  	100% {
+    	left: 0%;
+  	}
+}*/
+
+.btns {
+  	z-index: 100;
+  	position: absolute;
+  	bottom: 0;
+  	right: 0;
+  	display: flex;
+  	justify-content: flex-end;
+}
+
+.btns:hover~.sliders {
+	animation-play-state: paused;
+}
+
+.btns a {
+  	display: inline-block;
+  	margin: 0 1px;
+  	background-color: rgba(255, 255, 255, 0.5);
+  	color: white;
+  	text-decoration: none;
+  	padding: 10px 14px;
+}
