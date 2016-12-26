@@ -72,74 +72,101 @@ PeopleAndTarget.prototype.move = function() {
     if(this.route) {
         this.routeChange();
     }
-    else {
-        if(keyStatus.left || keyStatus.right || keyStatus.top || keyStatus.bottom) {
-            var rotateArc = this.rotateAngle * Math.PI / 180;
-            console.log(keyStatus.left + ' ' + keyStatus.right + ' ' + keyStatus.top + ' ' + keyStatus.bottom);
-            this.context.save();
-            this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
-            this.context.rotate(rotateArc);
-            this.context.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
-            this.context.restore();
-            if(keyStatus.left) {
-                this.x -= this.speed;
-                if(this.x <= 0 || this.isObstacle(this.x, this.y)) {
-                    this.x += this.speed;
-                }
-                this.rotateAngle = 180;
-            }
-            else if(keyStatus.right) {
+
+    if(keyStatus.left || keyStatus.right || keyStatus.top || keyStatus.bottom) {
+        var rotateArc = this.rotateAngle * Math.PI / 180;
+        this.context.save();
+        this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
+        this.context.rotate(rotateArc);
+        this.context.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
+        this.context.restore();
+        if(keyStatus.left) {
+            this.x -= this.speed;
+            if(this.x <= 0 || this.isObstacle(this.x, this.y)) {
                 this.x += this.speed;
-                if(this.x >= canvasWidth - this.width || this.isObstacle(this.x, this.y)) {
-                    this.x -= this.speed;
-                }
-                this.rotateAngle = 0;
             }
-            if(keyStatus.top) {
-                this.y -= this.speed;
-                if(this.y <= 0 || this.isObstacle(this.x, this.y)) {
-                    this.y += this.speed;
-                }
-                this.rotateAngle = 270;
-            }
-            else if(keyStatus.bottom) {
-                this.y += this.speed;
-                if(this.y >= canvasHeight - this.height || this.isObstacle(this.x, this.y)) {
-                    this.y -= this.speed;
-                }
-                this.rotateAngle = 90;
-            }
-            if(keyStatus['left'] && keyStatus['top']) {
-                this.rotateAngle = 225;
-            }
-            else if(keyStatus['left'] && keyStatus['bottom']) {
-                this.rotateAngle = 135;
-            }
-            else if(keyStatus['right'] && keyStatus['top']) {
-                this.rotateAngle = 315;
-            }
-            else if(keyStatus['right'] && keyStatus['bottom']) {
-                this.rotateAngle = 45;
-            }
-            this.draw();
+            this.rotateAngle = 180;
         }
+        else if(keyStatus.right) {
+            this.x += this.speed;
+            if(this.x >= canvasWidth - this.width || this.isObstacle(this.x, this.y)) {
+                this.x -= this.speed;
+            }
+            this.rotateAngle = 0;
+        }
+        if(keyStatus.top) {
+            this.y -= this.speed;
+            if(this.y <= 0 || this.isObstacle(this.x, this.y)) {
+                this.y += this.speed;
+            }
+            this.rotateAngle = 270;
+        }
+        else if(keyStatus.bottom) {
+            this.y += this.speed;
+            if(this.y >= canvasHeight - this.height || this.isObstacle(this.x, this.y)) {
+                this.y -= this.speed;
+            }
+            this.rotateAngle = 90;
+        }
+        if(keyStatus['left'] && keyStatus['top']) {
+            this.rotateAngle = 225;
+        }
+        else if(keyStatus['left'] && keyStatus['bottom']) {
+            this.rotateAngle = 135;
+        }
+        else if(keyStatus['right'] && keyStatus['top']) {
+            this.rotateAngle = 315;
+        }
+        else if(keyStatus['right'] && keyStatus['bottom']) {
+            this.rotateAngle = 45;
+        }
+        this.draw();
     }
+
 }
 
 /**
  *自动寻路实现
  */
-// PeopleAndTarget.prototype.routeChange = function() {
-//     keyStatus['left'] = false;
-//     keyStatus['right'] = false;
-//     keyStatus['bottom'] = false;
-//     keyStatus['top'] = false;
-//     if(this.routeArray.length == 0) {
-//         this.route = false;
-//         return ;
-//     }
+PeopleAndTarget.prototype.routeChange = function() {
+    keyStatus['left'] = false;
+    keyStatus['right'] = false;
+    keyStatus['bottom'] = false;
+    keyStatus['top'] = false;
+    if(this.routeArray.length == 0) {
+        this.route = false;
+        return ;
+    }
 
-//     var currentRoute = this.routeArray[0];
+    var currentRoute = this.routeArray[0];
 
-//     if(this.)
-// }
+    if(this.x == currentRoute.x * map.ceilWidth && this.y == currentRoute.y * map.ceilHeight) {
+        if(this.routeArray.length == 0) {
+            this.route = false;
+            return ;
+        }
+        currentRoute = this.routeArray[0];
+    }
+
+    if(this.x < currentRoute.x * map.ceilWidth) {
+        keyStatus['right'] = true;
+    }
+    else if(this.x > currentRoute.x * map.ceilWidth) {
+        keyStatus['left'] = true;
+    }
+    else {
+        keyStatus['left'] = false;
+        keyStatus['right'] = false;
+    }
+    if(this.y < currentRoute.y * map.ceilHeight) {
+        keyStatus['top'] = true;
+    }
+    else if(this.y > currentRoute.y * map.ceilHeight) {
+        keyStatus['bottom'] = true;
+    }
+    else {
+        keyStatus['top'] = false;
+        keyStatus['bottom'] = false;
+    }
+}
+
