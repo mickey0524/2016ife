@@ -70,7 +70,6 @@ function Background() {
     };
 
     function initMap(){
-        console.log(MAP.rows + ' ' + MAP.cols);
         MAP.arr=[];
         for(var i=0;i<MAP.rows;i++) {
             var arr=[];
@@ -153,7 +152,6 @@ function People(){
 
     //判断移动的方向有没有障碍物
     function isObstacle(x,y,width,height){
-        console.log(x + ' ' + y);
         var left_x=parseInt(x/MAP.cell_width),
             top_y=parseInt(y/MAP.cell_height),
             right_x=parseInt((x+width)/MAP.cell_width),
@@ -167,7 +165,6 @@ function People(){
             this.routeChange();
         }
         if (KEY_STATUS.left || KEY_STATUS.right || KEY_STATUS.down || KEY_STATUS.up) {
-            console.log('asd');
             var angleInRadians=this.rotation*Math.PI/180;
             this.context.save();
             this.context.translate(this.x+this.width/2,this.y+this.height/2);

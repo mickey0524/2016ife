@@ -52,7 +52,7 @@ document.onkeyup = function(e) {
 document.onclick = function(e) {
     var endX = parseInt(e.pageX / map.ceilWidth);
     var endY = parseInt(e.pageY / map.ceilHeight);
-    game.people.routeArray = findRoad(game.people.x, game.people.y, endX, endY);
+    game.people.routeArray = findRoad(parseInt(game.people.x / map.ceilWidth), parseInt(game.people.y / map.ceilHeight), endX, endY);
     game.people.route = true;
 }
 

@@ -68,6 +68,7 @@ function searchRoad(start_x,start_y,end_x,end_y,map){
         }while (currentObj.x!=start_x || currentObj.y!=start_y);
 
     }
+    console.log(result);
     return result;
 
 }

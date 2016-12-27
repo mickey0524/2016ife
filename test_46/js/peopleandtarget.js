@@ -141,6 +141,7 @@ PeopleAndTarget.prototype.routeChange = function() {
     var currentRoute = this.routeArray[0];
 
     if(this.x == currentRoute.x * map.ceilWidth && this.y == currentRoute.y * map.ceilHeight) {
+        this.routeArray.shift();
         if(this.routeArray.length == 0) {
             this.route = false;
             return ;
@@ -158,10 +159,10 @@ PeopleAndTarget.prototype.routeChange = function() {
         keyStatus['left'] = false;
         keyStatus['right'] = false;
     }
-    if(this.y < currentRoute.y * map.ceilHeight) {
+    if(this.y > currentRoute.y * map.ceilHeight) {
         keyStatus['top'] = true;
     }
-    else if(this.y > currentRoute.y * map.ceilHeight) {
+    else if(this.y < currentRoute.y * map.ceilHeight) {
         keyStatus['bottom'] = true;
     }
     else {

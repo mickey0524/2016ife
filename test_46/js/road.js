@@ -11,6 +11,10 @@ function findRoad(startX, startY, endX, endY) {
     var closeList = [];  //关闭的节点
     var result = [];     //结果数组
     var result_index;    //终点在openList中的索引
+    // console.log('1 ' + startX);
+    // console.log('2 ' + startY);
+    // console.log('3 ' + endX);
+    // console.log('4 ' + endY);
 
     openList.push({
         x : startX,
@@ -20,19 +24,20 @@ function findRoad(startX, startY, endX, endY) {
 
     do {
         var curPoint = openList.pop();
-        closeList.push(curPoint);
+        closeList.push(curPoint);      
         var pointList = surroundPoint(curPoint);
         for(var i in pointList) {
             var item = pointList[i];
             if(item.x >= 0 && item.x < map.rows && item.y >= 0 && item.y < map.columns &&
                map.arr[item.x][item.y] != 1 && !existList(item, closeList) && 
-               map.arr[curPoint.x][item.y] != 1 && map.arr[item.x][curPoint.y]) {
+               map.arr[curPoint.x][item.y] != 1 && map.arr[item.x][curPoint.y] != 1) {
                     var g = curPoint.G + ((curPoint.x - item.x) * (curPoint.y - item.y) == 0 ? 10 : 14);
                     if(!existList(item, openList)) {
                         item.G = g;
-                        item.H = Math.abs(end.x - item.x) * 10 + Math.abs(end.y - item.x) * 10;
+                        item.H = Math.abs(endX - item.x) * 10 + Math.abs(endY - item.y) * 10;
                         item.F = item.G + item.H;
                         item.parent = curPoint;
+                        openList.push(item);
                     }
                     else {
                         var index = existList(item, openList);
@@ -43,13 +48,14 @@ function findRoad(startX, startY, endX, endY) {
                         }
                     }
             }
-            if(openList.length == 0) {
-                break;
-            }
-            openList.sort(function(item1, item2) {
-                return item2.F - item1.F;
-            });
         }
+        if(openList.length == 0) {
+            break;
+        }
+        openList.sort(function(item1, item2) {
+            return item2.F - item1.F;
+        });
+
     } while(!(result_index = existList({x : endX, y : endY}, openList)));
 
     if(result_index) {
@@ -62,7 +68,6 @@ function findRoad(startX, startY, endX, endY) {
             point = point.parent;
         } while(point.x != startX || point.y != startY);
     }
-
     return result;
 
 }
