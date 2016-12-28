@@ -65,6 +65,36 @@ Guard.prototype.shoot = function(person) {
     var diffY = Math.abs(this.y - person.y);
     var distance = Math.pow((diffX * diffX + diffY * diffY), 0.5);
     if(distance < bulletRange) {
+        var guardX = parseInt(this.x / map.ceilWidth);
+        var guardY = parseInt(this.y / map.ceilHeight);
+        var personX = parseInt(person.x / map.ceilWidth);
+        var personY = parseInt(person.y / map.ceilHeight);
+        var maxX, maxY, minX, minY;
+        if(guardX == personX) {
+            maxX = guardX;
+            minX = guardX;
+        }
+        else {
+            maxX = Math.max(guardX, personX) - 1;
+            minX = Math.min(guardX, personX);
+        }
+        if(personY == guardY) {
+            minY = guardY;
+            maxY = guardY;
+        }
+        else {
+            maxY = Math.max(guardY, personY) - 1;
+            minY = Math.min(guardY, personY);
+        }
+        //console.log(minX + ' ' + maxX + ' ' + minY + ' ' + maxY);
+        for(var i = minX; i <= maxX; i++) {
+            for(var j = minY; j <= maxY; j++) {
+                console.log(i + ' ' + j + ' ' + map.arr[i][j]);
+                if(map.arr[i][j] == 1) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
     else {
