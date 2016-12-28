@@ -20,7 +20,7 @@ Background.prototype.start = function(guardNum) {
     this.context.clearRect(0, 0, canvasWidth, canvasHeight);
     this.initMap();
     this.randomRoad();
-    this.makeObstacle(map.columns * map.rows / 4);
+    this.makeObstacle(map.columns * map.rows / 6);
     this.makeGuard();
     this.draw();
 }

@@ -38,7 +38,7 @@ document.onkeydown = function(e) {
     }
     else if(keyCode == 32) {
         game.bulletPool.use();
-        game.bulletPool.get('green', game.people.x + 17, game.people.y + 17, game.people.rotateAngle);
+        game.bulletPool.get('green', game.people.x + 15, game.people.y + 15, game.people.rotateAngle);
     }
 }
 

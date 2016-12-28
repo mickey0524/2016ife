@@ -55,10 +55,6 @@ Game.prototype.restart = function() {
     keyStatus['right'] = false;
     keyStatus['bottom'] = false;
     keyStatus['top'] = false;
-    this.people.deletePeople();
-    this.guard.forEach(function(item) {
-        item.deleteGuard();
-    });
     this.guard = [];
     this.bulletPool.pool.forEach(function(item) {
         if(item.inUse) {
@@ -66,6 +62,7 @@ Game.prototype.restart = function() {
             item.clear();
         }
     });
+    this.context.clearRect(0, 0, canvasWidth, canvasHeight);
     this.init();
 }
 
@@ -73,9 +70,15 @@ Game.prototype.restart = function() {
  *动态调用people的move函数
  */
 Game.prototype.animate = function() {
+    var self = this;
     this.people.move();
     this.guard.forEach(function(item) {
         item.rotating();
+        if(item.shoot(self.people)) {
+            self.bulletPool.use();
+            //console.log(item.rotate);
+            self.bulletPool.get('blue', item.x + 15, item.y + 15, item.rotate % 360);
+        }
     });
     if(this.meet()) {
         this.guardNum += 1;
@@ -85,8 +88,7 @@ Game.prototype.animate = function() {
         this.restart();
     }
     else {
-        var self = this;
-        setTimeout(function() {
+        this.timer = setTimeout(function() {
             self.animate();
         }, 1000 / 60);
     }
@@ -113,10 +115,10 @@ Game.prototype.meet = function() {
  */
 Game.prototype.collision = function(item, array) {
     for(var i in array) {
-        if(item.x > array[i].x - array[i].width &&
-           item.x < array[i].x + array[i].width &&
-           item.y > array[i].y - array[i].height &&
-           item.y < array[i].y + array[i].height) {
+        if(item.x > array[i].x - item.width &&
+           item.x < array[i].x + item.width &&
+           item.y > array[i].y - item.height &&
+           item.y < array[i].y + item.height) {
             return i;
         }
     }
@@ -130,10 +132,28 @@ Game.prototype.bulletAnimate = function() {
     var self = this;
     this.bulletPool.pool.forEach(function(item) {
         if(item.inUse && item.color == 'green') {
-            console.log(item.x + ' ' + item.y + ' ' + item.width + ' ' + item.height);
-            if((i = self.collision(item, self.guard))) {
-                self.guard[i].deleteGuard();
-                self.guard.splice(i, 1);
+            for(var i = 0; i < self.guard.length; i++) {
+                if(item.x > self.guard[i].x &&
+                   item.x < self.guard[i].x + self.guard[i].width &&
+                   item.y > self.guard[i].y &&
+                   item.y < self.guard[i].y + self.guard[i].height) {
+                    self.guard[i].deleteGuard();
+                    self.guard.splice(i, 1);
+                    clearTimeout(item.timer);
+                    item.clear();
+                    break;
+                }
+            }
+        }
+        else if(item.inUse && item.color == 'blue') {
+            if(item.x > self.people.x &&
+               item.x < self.people.x + self.people.width &&
+               item.y > self.people.y &&
+               item.y < self.people.y + self.people.height) {
+                clearTimeout(item.timer);
+                item.clear();
+                clearTimeout(self.timer);
+                self.restart();
             }
         }
     });

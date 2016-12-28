@@ -46,18 +46,6 @@ PeopleAndTarget.prototype.draw = function() {
 }
 
 /**
- *删除屏幕上的人物和宝物
- */
-PeopleAndTarget.prototype.deletePeople = function() {
-    this.context.save();
-    this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
-    this.context.rotate(this.rotateAngle * Math.PI / 180);
-    this.context.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
-    this.context.restore();
-    this.context.clearRect((map.rows - 2) * map.ceilWidth, (map.columns - 2) * map.ceilWidth, this.width, this.height);
-}
-
-/**
  *判断前进方向是否有障碍
  *@Param {int} x,y 人物的坐标
  */

@@ -31,29 +31,31 @@
      * @Param {int} angle 子弹的偏射角
      */
     this.spawn = function(color, x, y, angle) {
-        this.flyStatus.top = false;
-        this.flyStatus.bottom = false;
-        this.flyStatus.left = false;
-        this.flyStatus.right = false;
-        this.x = x;
-        this.y = y;
-        this.distance = 0;
-        switch(angle) {
-            case 0 : this.flyStatus.right = true; this.x += 17; break;
-            case 90 : this.flyStatus.bottom = true; this.y += 17; break;
-            case 180 : this.flyStatus.left = true; this.x -= 17; break;
-            case 270 : this.flyStatus.top = true; this.y -= 17; break;
-            case 45 : this.flyStatus.right = true; this.flyStatus.bottom = true; this.x += 17; this.y += 17; break;
-            case 135 : this.flyStatus.bottom = true; this.flyStatus.left = true; this.x -= 17; this.y += 17; break;
-            case 225 : this.flyStatus.left = true; this.flyStatus.top = true; this.x -= 17; this.y -= 17; break;
-            case 315 : this.flyStatus.top = true; this.flyStatus.right = true; this.x += 17; this.y -= 17; break;
-            default : break;
+        if(angle % 45 == 0) {
+            this.flyStatus.top = false;
+            this.flyStatus.bottom = false;
+            this.flyStatus.left = false;
+            this.flyStatus.right = false;
+            this.x = x;
+            this.y = y;
+            this.distance = 0;
+            switch(angle) {
+                case 0 : this.flyStatus.right = true; this.x += 17; break;
+                case 90 : this.flyStatus.bottom = true; this.y += 17; break;
+                case 180 : this.flyStatus.left = true; this.x -= 17; break;
+                case 270 : this.flyStatus.top = true; this.y -= 17; break;
+                case 45 : this.flyStatus.right = true; this.flyStatus.bottom = true; this.x += 17; this.y += 17; break;
+                case 135 : this.flyStatus.bottom = true; this.flyStatus.left = true; this.x -= 17; this.y += 17; break;
+                case 225 : this.flyStatus.left = true; this.flyStatus.top = true; this.x -= 17; this.y -= 17; break;
+                case 315 : this.flyStatus.top = true; this.flyStatus.right = true; this.x += 17; this.y -= 17; break;
+                default : break;
+            }
+            this.inUse = true;
+            this.color = color;
+            this.angle = angle;
+            this.flying = true;
+            this.fly();    
         }
-        this.inUse = true;
-        this.color = color;
-        this.angle = angle;
-        this.flying = true;
-        this.fly();
     };
 
     /**
@@ -136,7 +138,7 @@
   */
  function BulletPool(context) {
     this.context = context;
-    this.size = 20;
+    this.size = 30;
     this.pool = [];
 
     /**

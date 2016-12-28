@@ -8,13 +8,13 @@ function Guard(context, imageFactory, x, y, width, height) {
     this.y = y;
     this.width = width;
     this.height = height;
-    console.log(this.x + ' ' + this.y + ' ' + this.width + ' ' + this.height);
     this.context = context;
     this.imageFactory = imageFactory;
 
     this.rotate = 0;
    
     this.init();
+    // this.shoot();
 }
 
 /** 
@@ -33,7 +33,7 @@ Guard.prototype.rotating = function() {
     this.context.rotate(this.rotate * Math.PI / 180);
     this.context.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
     this.context.restore();
-    this.rotate += 2;
+    this.rotate += 3;
     this.draw();
 }
 
@@ -54,4 +54,20 @@ Guard.prototype.deleteGuard = function() {
     this.context.rotate(this.rotate * Math.PI / 180);
     this.context.clearRect(-17, -17, 34, 34);
     this.context.restore();
+}
+
+/**
+ * 当人物进入守卫射程之后，守卫自动发射子弹
+ * @Param {Object} person 守卫需要判断敌人是否进入自己的射程
+ */
+Guard.prototype.shoot = function(person) {
+    var diffX = Math.abs(this.x - person.x);
+    var diffY = Math.abs(this.y - person.y);
+    var distance = Math.pow((diffX * diffX + diffY * diffY), 0.5);
+    if(distance < bulletRange) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
