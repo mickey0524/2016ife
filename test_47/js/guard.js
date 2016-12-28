@@ -8,7 +8,7 @@ function Guard(context, imageFactory, x, y, width, height) {
     this.y = y;
     this.width = width;
     this.height = height;
-    
+    console.log(this.x + ' ' + this.y + ' ' + this.width + ' ' + this.height);
     this.context = context;
     this.imageFactory = imageFactory;
 

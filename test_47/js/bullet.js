@@ -6,6 +6,8 @@
  function Bullet(context) {
     this.inUse = false;
     this.radius = 3;
+    this.width = 3;       //为了复用碰撞函数
+    this.height = 3;
     this.context = context;
     this.flyStatus = {
         left : false,
@@ -103,7 +105,7 @@
         bullet_y = (bullet_y < map.columns) ? bullet_y : (map.columns - 1);
         if(map.arr[bullet_x][bullet_y] == 1) {
             this.clear();
-            clearTimeout(timer);
+            clearTimeout(this.timer);
         }
         else {
             if(this.distance < this.range) {
@@ -117,13 +119,13 @@
                 this.context.fill();
                 this.context.restore();
                 var self = this;
-                var timer = setTimeout(function(){
+                this.timer = setTimeout(function(){
                     self.fly();
                 }, 1000 / 60);
             }
             else {
                 this.clear();
-                clearTimeout(timer);
+                clearTimeout(this.timer);
             }
         }
     }
@@ -134,17 +136,17 @@
   */
  function BulletPool(context) {
     this.context = context;
-    var size = 20;
-    var pool = [];
+    this.size = 20;
+    this.pool = [];
 
     /**
      * 对象池初始化，限制为20个对象
      */
     this.init = function() {
-        for(var i = 0; i < size; i++) {
+        for(var i = 0; i < this.size; i++) {
             var bullet = new Bullet(this.context);
             bullet.init();
-            pool[i] = bullet;
+            this.pool[i] = bullet;
         }
     };
 
@@ -152,9 +154,9 @@
      * 获取一个可以使用的子弹对象
      */
     this.get = function(color, x, y, angle) {
-        if(!pool[size - 1].inUse) {
-            pool[size - 1].spawn(color, x, y, angle);
-            pool.unshift(pool.pop());
+        if(!this.pool[this.size - 1].inUse) {
+            this.pool[this.size - 1].spawn(color, x, y, angle);
+            this.pool.unshift(this.pool.pop());
         }
     };
     
@@ -162,11 +164,11 @@
      * 将使用完毕的子弹对象移到数组尾部，重新使用
      */
     this.use = function() {
-        for(var i = 0; i < size; i++) {
-            if(pool[i].inUse) {
-                if(pool[i].use()) {
-                    pool[i].clear();
-                    pool.push((pool.splice(i, 1))[0]);
+        for(var i = 0; i < this.size; i++) {
+            if(this.pool[i].inUse) {
+                if(this.pool[i].use()) {
+                    this.pool[i].clear();
+                    this.pool.push((pool.splice(i, 1))[0]);
                 }
             }
             else {
