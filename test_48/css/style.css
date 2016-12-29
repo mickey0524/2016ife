@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background: #6F6860;
+    display: block;
+    line-height: 30px;
+}
+
+div span {
+    color: #E3B486;
+}
+
+canvas {
+    width: 100%;
+    height: calc(100% - 30px);
+    height: -webkit-calc(100% - 30px);
+    height: -moz-calc(100% - 30px);
+    position: absolute;
+    left: 0;
+    top: 30;
+    display: block;
+}
