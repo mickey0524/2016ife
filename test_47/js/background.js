@@ -13,10 +13,10 @@ function Background(element, imageFactory) {
 
 /**
  * 初始化函数
- * @Param {int} guardNum 当前关卡首位的个数，最多为10个
+ * @Param {int} guardNum 当前关卡首位的个数，最多为18个
  */
 Background.prototype.start = function(guardNum) {
-    this.guardNum = (guardNum > 10) ? 10 : guardNum;
+    this.guardNum = (guardNum > 18) ? 18 : guardNum;
     this.context.clearRect(0, 0, canvasWidth, canvasHeight);
     this.initMap();
     this.randomRoad();

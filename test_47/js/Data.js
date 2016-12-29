@@ -1,6 +1,6 @@
 
 var canvasWidth = document.getElementsByTagName('body')[0].offsetWidth;
-var canvasHeight = document.getElementsByTagName('body')[0].offsetHeight;
+var canvasHeight = document.getElementsByTagName('body')[0].offsetHeight - 30;
 var bulletRange = 120;
 
 var keyCodes = {

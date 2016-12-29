@@ -22,6 +22,7 @@ function Game(canvas, peopleCanvas, imageFactory, guardNum) {
     this.background = new Background(this.canvas, this.imageFactory);
     this.people = new PeopleAndTarget(this.context, this.imageFactory, 30, 30);
     this.guard = [];
+    this.level = 1;
     
     this.bulletPool = new BulletPool(this.context);
     this.bulletAnimate();
@@ -43,6 +44,7 @@ Game.prototype.init = function() {
         }
     }
     this.animate();
+    document.getElementById('level').innerHTML = this.level;
 }
 
 /**
@@ -82,6 +84,7 @@ Game.prototype.animate = function() {
     });
     if(this.meet()) {
         this.guardNum += 1;
+        this.level += 1;
         this.restart();
     }
     else if(this.collision(this.people, this.guard)) {
