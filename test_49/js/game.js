@@ -38,11 +38,11 @@ Game.prototype.init = function() {
     for(var i = 0; i < map.rows; i++) {
         for(var j = 0; j < map.columns; j++) {
             if(map.arr[i][j] == 3) {
-                var guard = new Guard(this.context, this.imageFactory, i * map.ceilWidth, j * map.ceilHeight, 30, 30);
+                var type = parseInt(Math.random() * 2);
+                var guard = new Guard(this.context, this.imageFactory, i * map.ceilWidth, j * map.ceilHeight, 30, 30, type);
                 this.guard.push(guard);
             }
             else if(map.arr[i][j] == 4) {
-                console.log(i + ' ' + j);
                 this.bomb.push({x : i * map.ceilWidth, y : j * map.ceilHeight, width : 30, height : 30});
                 this.context.drawImage(this.imageFactory.bomb, i * map.ceilWidth, j * map.ceilHeight, 30, 30);
             }
@@ -84,13 +84,25 @@ Game.prototype.restart = function() {
 Game.prototype.animate = function() {
     var self = this;
     this.people.move();
-    this.guard.forEach(function(item) {
-        item.rotating();
-        if(item.shoot(self.people)) {
-            self.bulletPool.use();
-            //console.log(item.rotate);
-            self.bulletPool.get('blue', item.x + 15, item.y + 15, item.rotate % 360);
+    this.guard.forEach(function(item) { 
+        if(item.scope(self.people)) {
+            if(item.type == 0) {
+                self.bulletPool.use();
+                self.bulletPool.get('blue', item.x + 15, item.y + 15, item.rotate % 360);              
+            }
+            else {
+                item.route = true;
+                item.routeArray = findRoad(parseInt(item.x / map.ceilWidth), parseInt(item.y / map.ceilHeight), 
+                                           parseInt(self.people.x / map.ceilWidth), parseInt(self.people.y / map.ceilHeight));
+            }
         }
+        else {
+            if(item.type == 1) {
+                item.route = false;
+                item.routeArray = [];
+            }
+        }
+        item.operate();
     });
     var index;
     if((index = this.collision(this.people, this.bomb))) {

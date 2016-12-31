@@ -3,7 +3,7 @@
  * 图片工厂，对图片做预加载
  */
 function ImageFactory() {
-    this.loadNum = 6;
+    this.loadNum = 7;
     this.nowNum = 0;
     this.background = new Image();
     this.people = new Image();
@@ -11,12 +11,14 @@ function ImageFactory() {
     this.target = new Image();
     this.guard = new Image();
     this.bomb = new Image();
+    this.guard1 = new Image();
     this.background.src = "img/bg.png";
     this.people.src = 'img/people.png';
     this.obstacle.src = 'img/obstacle.png';
     this.target.src = 'img/target.png';
     this.guard.src = 'img/guard.png';
     this.bomb.src = 'img/bomb.png';
+    this.guard1.src = 'img/guard1.png';
     var self = this;
     this.background.onload = function() {
         self.imageLoad();
@@ -34,6 +36,9 @@ function ImageFactory() {
         self.imageLoad();
     }
     this.bomb.onload = function() {
+        self.imageLoad();
+    }
+    this.guard1.onload = function() {
         self.imageLoad();
     }
 }
