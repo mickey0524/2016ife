@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.title {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background: #6F6860;
+    display: block;
+    line-height: 30px;
+}
+
+.title span {
+    color: #E3B486;
+}
+
+.paint {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+canvas {
+/*    width: 100%;
+    height: calc(100% - 30px);
+    height: -webkit-calc(100% - 30px);
+    height: -moz-calc(100% - 30px);
+    height: 100%;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+}

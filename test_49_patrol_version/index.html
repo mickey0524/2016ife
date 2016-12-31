@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title>test_49_patrol_version</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="title">
+		<span>当前得分:</span>
+		<span id="score">0</span>
+		<span>击毁敌人数目:</span>
+		<span id="wreck">0</span>
+		<span>炸弹数目:</span>
+		<span id="bombNum">0</span>
+	</div>
+	<div class="paint">
+		<canvas id="background" width="400" height="600">
+			您的浏览器不支持canvas
+		</canvas>
+
+		<canvas id="people">
+			
+		</canvas>
+	</div>
+	<div>
+		<audio autoplay="autoplay" loop="loop" id="backgroundAudio">
+			<source src="audio/numb.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="bulletAudio">
+			<source src="audio/bullet.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="bombAudio">
+			<source src="audio/bomb.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="treasure">
+			<source src="audio/treasure.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+<script type="text/javascript" src="js/Data.js"></script>
+<script type="text/javascript" src="js/Image.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
+<script type="text/javascript" src="js/road.js"></script>
+<script type="text/javascript" src="js/peopleandtarget.js"></script>
+<script type="text/javascript" src="js/bullet.js"></script>
+<script type="text/javascript" src="js/guard.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
