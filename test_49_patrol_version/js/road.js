@@ -11,10 +11,10 @@ function findRoad(startX, startY, endX, endY) {
     var closeList = [];  //关闭的节点
     var result = [];     //结果数组
     var result_index;    //终点在openList中的索引
-    console.log('1 ' + startX);
-    console.log('2 ' + startY);
-    console.log('3 ' + endX);
-    console.log('4 ' + endY);
+    // console.log('1 ' + startX);
+    // console.log('2 ' + startY);
+    // console.log('3 ' + endX);
+    // console.log('4 ' + endY);
 
     openList.push({
         x : startX,

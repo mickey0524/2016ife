@@ -25,6 +25,8 @@ function Guard(context, imageFactory, x, y, width, height, type, path, direction
     this.routeArray = [];
     this.path = path;
     this.speed = 1;
+    this.going = false;   //判断近战坦克是否在追击
+    this.shooting = false;  //判断远战坦克是否在开枪
     this.direction = direction;
     this.rotate = rotate;
     this.init();
@@ -46,43 +48,51 @@ Guard.prototype.init = function() {
  * 模拟守卫的操作，有可能是旋转，也可能是追击
  */
 Guard.prototype.operate = function() {
-    this.context.save();
-    this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
-    this.context.rotate(this.rotate * Math.PI / 180);
-    this.context.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
-    this.context.restore();
     if(this.route) {
-        this.move();
+        if(!this.going) {
+            this.move();
+        } 
     }
+
     else {
-        var point = this.path[0];
-        if(this.direction == 'southToNorth') {
-            if(this.y == point.y * map.ceilHeight) {
-                this.path.push(this.path.shift());
-            }
-            else if(this.y > point.y * map.ceilHeight) {
-                this.y -= this.speed;
-                this.rotate = 270;
-            }
-            else {
-                this.y += this.speed;
-                this.rotate = 90;
-            }
+        this.context.save();
+        this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
+        this.context.rotate(this.rotate * Math.PI / 180);
+        this.context.clearRect(-20, -20, 40, 40);
+        this.context.restore();
+        if(this.shooting) {
+            this.rotate += 3;
         }
         else {
-            if(this.x == point.x * map.ceilWidth) {
-                this.path.push(this.path.shift());
-            }
-            else if(this.x > point.x * map.ceilWidth) {
-                this.x -= this.speed;
-                this.rotate = 180;
+            var point = this.path[0];
+            if(this.direction == 'southToNorth') {
+                if(this.y == point.y * map.ceilHeight) {
+                    this.path.push(this.path.shift());
+                }
+                else if(this.y > point.y * map.ceilHeight) {
+                    this.y -= this.speed;
+                    this.rotate = 270;
+                }
+                else {
+                    this.y += this.speed;
+                    this.rotate = 90;
+                }
             }
             else {
-                this.x += this.speed;
-                this.rotate = 0;
-            }
+                if(this.x == point.x * map.ceilWidth) {
+                    this.path.push(this.path.shift());
+                }
+                else if(this.x > point.x * map.ceilWidth) {
+                    this.x -= this.speed;
+                    this.rotate = 180;
+                }
+                else {
+                    this.x += this.speed;
+                    this.rotate = 0;
+                }
+            }         
         }
-        this.draw();       
+        this.draw(); 
     }
 }
 
@@ -106,8 +116,11 @@ Guard.prototype.deleteGuard = function() {
     this.context.save();
     this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
     this.context.rotate(this.rotate * Math.PI / 180);
-    this.context.clearRect(-17, -17, 34, 34);
+    this.context.clearRect(-20, -20, 40, 40);
     this.context.restore();
+    if(this.type == 1 && this.going) {
+        clearInterval(this.timer);
+    }
 }
 
 /**
@@ -160,49 +173,59 @@ Guard.prototype.scope = function(person) {
  * 当玩家进入近战守卫的感知范围，近战守卫自动追逐
  */
 Guard.prototype.move = function() {
-    this.context.save();
-    this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
-    this.context.rotate(this.rotate);
-    this.context.clearRect(-17, -17, 34, 34);
-    this.context.restore();
+    this.going = true;
     var nextPoint = this.routeArray.shift();
     console.log(nextPoint);
-    var left = false, right = false, top = false, bottom = false;
-    if(this.x < nextPoint.x * map.ceilWidth) {
-        right = true;
-        this.rotate = 0;
-        this.x += this.speed;
-    }
-    else if(this.x > nextPoint.x * map.ceilWidth) {
-        left = true;
-        this.rotate = 180;
-        this.x -= this.speed;
-    }
-    if(this.y > nextPoint.y * map.ceilHeight) {
-        top = true;
-        this.rotate = 270;
-        this.y -= this.speed;
-    }
-    else if(this.y < nextPoint.y * map.ceilHeight) {
-        bottom = true;
-        this.rotate = 90;
-        this.y += this.speed;
-    }   
-    if(left && top) {
-        this.rotate = 225;
-    }
-    else if(left && bottom) {
-        this.rotate = 135;
-    }
-    else if(right && top) {
-        this.rotate = 315;
-    }
-    else if(right && bottom) {
-        this.rotate = 45;
-    }
-    this.context.save();
-    this.context.translate(this.x + this.width / 2, this.y + this.height / 2);
-    this.context.rotate(this.rotate * Math.PI / 180);
-    this.context.drawImage(this.imageFactory.guard1, -this.width / 2, -this.height / 2, this.width, this.height);
-    this.context.restore();
+    var left = false, right = false, top = false, bottom = false, num = 0;
+    var self = this;
+
+    this.timer = setInterval(function() {
+        self.context.save();
+        self.context.translate(self.x + self.width / 2, self.y + self.height / 2);
+        self.context.rotate(self.rotate);
+        self.context.clearRect(-20, -20, 40, 40);
+        self.context.restore();
+        if(self.x < nextPoint.x * map.ceilWidth) {
+            right = true;
+            self.rotate = 0;
+            self.x += self.speed;
+        }
+        else if(self.x > nextPoint.x * map.ceilWidth) {
+            left = true;
+            self.rotate = 180;
+            self.x -= self.speed;
+        }
+        if(self.y > nextPoint.y * map.ceilHeight) {
+            top = true;
+            self.rotate = 270;
+            self.y -= self.speed;
+        }
+        else if(self.y < nextPoint.y * map.ceilHeight) {
+            bottom = true;
+            self.rotate = 90;
+            self.y += self.speed;
+        }   
+        if(left && top) {
+            self.rotate = 225;
+        }
+        else if(left && bottom) {
+            self.rotate = 135;
+        }
+        else if(right && top) {
+            self.rotate = 315;
+        }
+        else if(right && bottom) {
+            self.rotate = 45;
+        }
+        self.context.save();
+        self.context.translate(self.x + self.width / 2, self.y + self.height / 2);
+        self.context.rotate(self.rotate * Math.PI / 180);
+        self.context.drawImage(self.imageFactory.guard1, -self.width / 2, -self.height / 2, self.width, self.height);
+        self.context.restore();
+        num += 1;
+        if(num == 34) {
+            self.going = false;
+            clearInterval(self.timer);
+        }
+    }, 1000 / 60);
 }

@@ -39,6 +39,8 @@
             this.x = x;
             this.y = y;
             this.distance = 0;
+            this.angle = angle;
+            console.log(angle);
             switch(angle) {
                 case 0 : this.flyStatus.right = true; this.x += 17; break;
                 case 90 : this.flyStatus.bottom = true; this.y += 17; break;
@@ -52,7 +54,6 @@
             }
             this.inUse = true;
             this.color = color;
-            this.angle = angle;
             this.flying = true;
             this.fly();    
         }
@@ -86,7 +87,6 @@
         this.context.rotate(this.angle * Math.PI / 180);
         this.context.clearRect(-this.radius - 1, -this.radius - 1, 2 * this.radius + 2, 2 * this.radius + 2);
         this.context.restore();
-        console.log(this.x + ' ' + this.y);
         if(this.flyStatus.left) {
             this.x -= this.speed;
         }

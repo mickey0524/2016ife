@@ -130,8 +130,9 @@ Game.prototype.animate = function() {
     this.guard.forEach(function(item) { 
         if(item.scope(self.people)) {
             if(item.type == 0) {
+                item.shooting = true;  
                 self.bulletPool.use();
-                self.bulletPool.get('blue', item.x + 15, item.y + 15, item.rotate % 360);            
+                self.bulletPool.get('blue', item.x + 15, item.y + 15, item.rotate % 360); 
             }
             else {
                 item.route = true;
@@ -140,10 +141,21 @@ Game.prototype.animate = function() {
             }
         }
         else {
-            if(item.type == 1) {
-                item.route = false;
-                item.routeArray = [];
+            if(item.route) {
+                if(item.x == item.path[0].x * map.ceilWidth && item.y == item.path[0].y * map.ceilHeight) {
+                    item.route = false;
+                    item.routeArray = [];
+                }
+                else {
+                    item.route = true;
+                    item.routeArray = findRoad(parseInt(item.x / map.ceilWidth), parseInt(item.y / map.ceilHeight),
+                                               item.path[0].x, item.path[0].y);
+                }
             }
+            else if(item.shooting) {
+                item.shooting = false;
+            }
+
         }
         item.operate();
     });
@@ -160,7 +172,10 @@ Game.prototype.animate = function() {
         // this.level += 1;
         this.restart();
     }
-    else if(this.collision(this.people, this.guard)) {
+    else if((index = this.collision(this.people, this.guard))) {
+        if(this.guard[index].type == 1 && this.guard[index].going) {
+            clearInterval(this.guard[index].timer);
+        }
         this.restart();
     }
     else {
