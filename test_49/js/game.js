@@ -117,7 +117,10 @@ Game.prototype.animate = function() {
         // this.level += 1;
         this.restart();
     }
-    else if(this.collision(this.people, this.guard)) {
+    else if((index = this.collision(this.people, this.guard))) {  
+        if(this.guard[index].type == 1 && this.guard[index].going) {
+            clearInterval(this.guard[index].timer);
+        }   
         this.restart();
     }
     else {
