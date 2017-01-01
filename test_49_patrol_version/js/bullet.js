@@ -40,7 +40,7 @@
             this.y = y;
             this.distance = 0;
             this.angle = angle;
-            console.log(angle);
+            //console.log(angle);
             switch(angle) {
                 case 0 : this.flyStatus.right = true; this.x += 17; break;
                 case 90 : this.flyStatus.bottom = true; this.y += 17; break;

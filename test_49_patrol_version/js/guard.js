@@ -175,7 +175,7 @@ Guard.prototype.scope = function(person) {
 Guard.prototype.move = function() {
     this.going = true;
     var nextPoint = this.routeArray.shift();
-    console.log(nextPoint);
+    //console.log(nextPoint);
     var left = false, right = false, top = false, bottom = false, num = 0;
     var self = this;
 

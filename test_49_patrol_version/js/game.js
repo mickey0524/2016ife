@@ -98,6 +98,7 @@ Game.prototype.init = function() {
     document.getElementById('background').style.top = '0';
     this.people.wreck = 0;
     document.getElementById('wreck').innerHTML = 0;
+    document.getElementById('bombNum').innerHTML = '0';
 }
 
 /**

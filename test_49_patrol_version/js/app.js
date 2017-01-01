@@ -74,12 +74,14 @@ document.onkeyup = function(e) {
  * 点击屏幕，触发自动寻路，按Esc可以退出自动寻路
  */
 document.onclick = function(e) {
-    var top = document.getElementById('background').style.top;
-    top = Math.abs(Number(top.slice(0, top.indexOf('p'))));
-    var endX = parseInt(e.pageX / map.ceilWidth);
-    var endY = parseInt((e.pageY - 30 + top) / map.ceilHeight);
-    game.people.routeArray = findRoad(parseInt(game.people.x / map.ceilWidth), parseInt(game.people.y / map.ceilHeight), endX, endY);
-    game.people.route = true;
+    if(e.pageY >= 30) {
+        var top = document.getElementById('background').style.top;
+        top = Math.abs(Number(top.slice(0, top.indexOf('p'))));
+        var endX = parseInt(e.pageX / map.ceilWidth);
+        var endY = parseInt((e.pageY - 30 + top) / map.ceilHeight);
+        game.people.routeArray = findRoad(parseInt(game.people.x / map.ceilWidth), parseInt(game.people.y / map.ceilHeight), endX, endY);
+        game.people.route = true;        
+    } 
 }
 
 
