@@ -38,8 +38,8 @@ Game.prototype.init = function() {
     for(var i = 0; i < map.rows; i++) {
         for(var j = 0; j < map.columns; j++) {
             if(map.arr[i][j] == 3) {
-                // var type = parseInt(Math.random() * 2);
-                var type = 0;
+                var type = parseInt(Math.random() * 2);
+                // var type = 0;
                 var percent = Math.random();
                 var direction = (percent >= 0.5) ? 'southToNorth' : 'eastToWest';
                 var path = [];
